@@ -1,4 +1,4 @@
 # workshop-template
 
-This repository is [Software Carpentry](http://software-carpentry.org)'s
-for the NYAS workshop, March 6-7, 2015
+This repository is for the Software Carpentry
+NYAS workshop, March 6-7, 2015
