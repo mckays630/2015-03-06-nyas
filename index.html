@@ -125,17 +125,6 @@ eventbrite: # FIXME (delete this if not used, otherwise uncomment and provide 12
 <hr/>
 
 <!--
-  SCHEDULE
-
-  Show the workshop's schedule.  Edit the items and times in the table
-  to match your plans.  You may also want to change 'Day 1' and 'Day
-  2' to be actual dates or days of the week.
--->
-<h2>Schedule</h2>
-<p></p><a href="python_schedule.html">Python Room</a></p>
-<p></p><a href="R_schedule.html">R Room</a></p>
-
-<!--
   ETHERPAD
 
   Display the Etherpad for the workshop.  You can set this up in
@@ -148,12 +137,25 @@ eventbrite: # FIXME (delete this if not used, otherwise uncomment and provide 12
   '2015-06-10-esu'.
 -->
 {% if page.etherpad %}
-<p>
+<h2>Etherpad</h2>
+
   <strong>Etherpad:</strong> <a href="{{page.etherpad}}">{{page.etherpad}}</a>.
   <br/>
   We will use this Etherpad for chatting, taking notes, and sharing URLs and bits of code.
-</p>
 {% endif %}
+
+<hr/>
+
+<!--
+  SCHEDULE
+
+  Show the workshop's schedule.  Edit the items and times in the table
+  to match your plans.  You may also want to change 'Day 1' and 'Day
+  2' to be actual dates or days of the week.
+-->
+<h2>Schedule</h2>
+<p></p><a href="python_schedule.html">Python Room</a></p>
+<p></p><a href="R_schedule.html">R Room</a></p>
 
 <hr/>
 
