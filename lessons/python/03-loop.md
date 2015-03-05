@@ -143,7 +143,7 @@ more robust as well:
 <pre class="in"><code>print_characters(&#39;oxygen&#39;)</code></pre>
 
 
-The improved version of `print_characters` uses a [for loop](../../gloss.html#for-loop)
+The improved version of `print_characters` uses a [for loop](http://software-carpentry.org/v5/gloss.html#for-loop)
 to repeat an operation---in this case, printing---once for each thing in a collection.
 The general form of a loop is:
 
@@ -153,7 +153,7 @@ The general form of a loop is:
 </pre>
 
 
-We can call the [loop variable](../../gloss.html#loop-variable) anything we like,
+We can call the [loop variable](http://software-carpentry.org/v5/gloss.html#loop-variable) anything we like,
 but there must be a colon at the end of the line starting the loop,
 and we must indent the body of the loop.
 
@@ -294,8 +294,8 @@ does not.
 
 > #### Ch-Ch-Ch-Changes
 >
-> Data that can be changed is called [mutable](../../gloss.html#mutable),
-> while data that cannot be is called [immutable](../../gloss.html#immutable).
+> Data that can be changed is called [mutable](http://software-carpentry.org/v5/gloss.html#mutable),
+> while data that cannot be is called [immutable](http://software-carpentry.org/v5/gloss.html#immutable).
 > Like strings,
 > numbers are immutable:
 > there's no way to make the number 0 have the value 1 or vice versa

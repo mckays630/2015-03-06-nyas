@@ -40,7 +40,7 @@ $ python readings.py --max inflammation-*.csv
 
 Our overall requirements are:
 
-1. If no filename is given on the command line, read data from [standard input](../../gloss.html#standard-input).
+1. If no filename is given on the command line, read data from [standard input](http://software-carpentry.org/v5/gloss.html#standard-input).
 2. If one or more filenames are given, read data from them and report statistics for each file separately.
 3. Use the `--min`, `--mean`, or `--max` flag to determine what statistic to print.
 
@@ -453,7 +453,7 @@ but there are seveal things wrong with it:
 2.  If `action` isn't one of the three recognized flags,
     the program loads each file but does nothing with it
     (because none of the branches in the conditional match).
-    [Silent failures](../../gloss.html#silent-failure) like this
+    [Silent failures](http://software-carpentry.org/v5/gloss.html#silent-failure) like this
     are always hard to debug.
 
 This version pulls the processing of each file out of the loop into a function of its own.

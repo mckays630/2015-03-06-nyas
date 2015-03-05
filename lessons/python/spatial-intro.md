@@ -25,7 +25,7 @@ Adelman</a>; modified by <a href="http://www.randalolson.com/">Randy Olson</a>
 
 We are examining some simple spatial coordinate data, specifically the location
 of all of the previous Software Carpentry workshops. The data set is stored in
-[comma-separated values](../../gloss.html#csv) (CSV) format. After the header
+[comma-separated values](http://software-carpentry.org/v5/gloss.html#csv) (CSV) format. After the header
 line (marked with a `#`), each row contains the latitude and longitude for each
 workshop, separated by a comma.
 
@@ -56,13 +56,13 @@ programming.
 ### Loading the data
 
 In order to work with the coordinates stored in the file, we need to
-[import](../../gloss.html#import) a library called NumPy that is designed to
+[import](http://software-carpentry.org/v5/gloss.html#import) a library called NumPy that is designed to
 easily handle arrays of data.
 
 
     import numpy as np
 
-It's very common to create an [alias](../../gloss.html#alias-library) for a
+It's very common to create an [alias](http://software-carpentry.org/v5/gloss.html#alias-library) for a
 library when importing it
 in order to reduce the amount of typing we have to do. We can now refer to this
 library in the code as `np` instead of typing out `numpy` each time we want to
@@ -75,24 +75,24 @@ We can now ask numpy to read our data file:
 
 The expression `np.loadtxt(...)` means,
 "Run the function `loadtxt` that belongs to the `numpy` library."
-This [dotted notation](../../gloss.html#dotted-notation) is used everywhere in
+This [dotted notation](http://software-carpentry.org/v5/gloss.html#dotted-notation) is used everywhere in
 Python
 to refer to the parts of larger things.
 
-`np.loadtxt` has three [parameters](../../gloss.html#parameter):
+`np.loadtxt` has three [parameters](http://software-carpentry.org/v5/gloss.html#parameter):
 the name of the file we want to read,
-and the [delimiter](../../gloss.html#delimiter) that separates values on a line.
-These both need to be character strings (or [strings](../../gloss.html#string)
+and the [delimiter](http://software-carpentry.org/v5/gloss.html#delimiter) that separates values on a line.
+These both need to be character strings (or [strings](http://software-carpentry.org/v5/gloss.html#string)
 for short),
 so we put them in quotes.
 Finally, passing the `unpack` paramter the boolean value, `True` tells
 `np.loadtxt` to take the first and second column of data and
-[assign](../../gloss.html#assignment) them to the
-[variables](../../gloss.html#variable)  `lat` and `lon`, respectively.
+[assign](http://software-carpentry.org/v5/gloss.html#assignment) them to the
+[variables](http://software-carpentry.org/v5/gloss.html#variable)  `lat` and `lon`, respectively.
 A variable is just a name for some data.
 Also note that `np.loadtxt` automatically skipped the line with the header
 information, since it recognizes that
-this line is a [comment](../../gloss.html#comment) and does not contain
+this line is a [comment](http://software-carpentry.org/v5/gloss.html#comment) and does not contain
 numerical data.
 
 When we are finished typing and press Shift+Enter,

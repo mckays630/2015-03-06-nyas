@@ -47,8 +47,8 @@ is much greater than the time that measuring takes.
 The first step toward getting the right answers from our programs
 is to assume that mistakes *will* happen
 and to guard against them.
-This is called [defensive programming](../../gloss.html#defensive-programming),
-and the most common way to do it is to add [assertions](../../gloss.html#assertion) to our code
+This is called [defensive programming](http://software-carpentry.org/v5/gloss.html#defensive-programming),
+and the most common way to do it is to add [assertions](http://software-carpentry.org/v5/gloss.html#assertion) to our code
 so that it checks itself as it runs.
 An assertion is simply a statement that something must be true at a certain point in a program.
 When Python sees one,
@@ -87,11 +87,11 @@ are there to check that the other 80-90% are working correctly.
 Broadly speaking,
 assertions fall into three categories:
 
--   A [precondition](../../gloss.html#precondition) is something that must be true
+-   A [precondition](http://software-carpentry.org/v5/gloss.html#precondition) is something that must be true
  at the start of a function in order for it to work correctly.
--   A [postcondition](../../gloss.html#postcondition) is something that
+-   A [postcondition](http://software-carpentry.org/v5/gloss.html#postcondition) is something that
  the function guarantees is true when it finishes.
--   An [invariant](../../gloss.html#invariant) is something that is always true
+-   An [invariant](http://software-carpentry.org/v5/gloss.html#invariant) is something that is always true
  at a particular point inside a piece of code.
 
 For example,
@@ -220,7 +220,7 @@ If you made a mistake in a piece of code,
 the odds are good that you have made other mistakes nearby,
 or will make the same mistake (or a related one)
 the next time you change it.
-Writing assertions to check that you haven't [regressed](../../gloss.html#regression)
+Writing assertions to check that you haven't [regressed](http://software-carpentry.org/v5/gloss.html#regression)
 (i.e., haven't re-introduced an old problem)
 can save a lot of time in the long run,
 and helps to warn people who are reading the code
@@ -281,7 +281,7 @@ there's a better way:
 3. If `range_overlap` produces any wrong answers, fix it and re-run the test functions.
 
 Writing the tests *before* writing the function they exercise
-is called [test-driven development](../../gloss.html#test-driven-development) (TDD).
+is called [test-driven development](http://software-carpentry.org/v5/gloss.html#test-driven-development) (TDD).
 Its advocates believe it produces better code faster because:
 
 1. If people write tests after writing the thing to be tested,
@@ -500,7 +500,7 @@ scientists tend to do the following:
  our first test should hold temperature, precipitation, and other factors constant.
 
 3. *Compare to an oracle.*
- A [test oracle](../../gloss.html#test-oracle) is something&mdash;experimental data,
+ A [test oracle](http://software-carpentry.org/v5/gloss.html#test-oracle) is something&mdash;experimental data,
  an older program whose results are trusted,
  or even a human expert&mdash;against which we can compare the results of our new program.
  If we have a test oracle,
@@ -600,7 +600,7 @@ the harder it is to know what's responsible for what
 (those N<sup>2</sup> interactions again).
 And we should re-run *all* of our tests:
 more than half of fixes made to code introduce (or re-introduce) bugs,
-so re-running all of our tests tells us whether we have [regressed](../../gloss.html#regression).
+so re-running all of our tests tells us whether we have [regressed](http://software-carpentry.org/v5/gloss.html#regression).
 
 #### Keep Track of What You've Done
 
