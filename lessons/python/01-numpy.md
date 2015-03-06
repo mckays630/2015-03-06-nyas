@@ -597,7 +597,7 @@ pyplot.imshow(data)
 pyplot.show()</code></pre>
 
 <div class="out">
-<img src="2015-03-06-nyas/lessons/python/01-numpy_files/novice/python/01-numpy_71_0.png">
+<img src="../../lessons/python/01-numpy_files/novice/python/01-numpy_71_0.png">
 </div>
 
 
@@ -612,7 +612,7 @@ pyplot.plot(ave_inflammation)
 pyplot.show()</code></pre>
 
 <div class="out">
-<img src="2015-03-06-nyas/lessons/python/01-numpy_files/novice/python/01-numpy_73_0.png">
+<img src="../../lessons/python/01-numpy_files/novice/python/01-numpy_73_0.png">
 </div>
 
 
@@ -636,10 +636,10 @@ pyplot.show()</code></pre>
 
 <div class="out"><pre class='out'><code>maximum inflammation per day
 </code></pre>
-<img src="2015-03-06-nyas/lessons/python/01-numpy_files/novice/python/01-numpy_75_1.png">
+<img src="../../lessons/python/01-numpy_files/novice/python/01-numpy_75_1.png">
 <pre class='out'><code>minimum inflammation per day
 </code></pre>
-<img src="2015-03-06-nyas/lessons/python/01-numpy_files/novice/python/01-numpy_75_3.png">
+<img src="../../lessons/python/01-numpy_files/novice/python/01-numpy_75_3.png">
 </div>
 
 
@@ -690,7 +690,7 @@ plt.tight_layout()
 plt.show()</code></pre>
 
 <div class="out">
-<img src="2015-03-06-nyas/lessons/python/01-numpy_files/novice/python/01-numpy_80_0.png">
+<img src="../../lessons/python/01-numpy_files/novice/python/01-numpy_80_0.png">
 </div>
 
 

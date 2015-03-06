@@ -38,7 +38,7 @@ def analyze(filename):
 analyze(&#39;inflammation-01.csv&#39;)</code></pre>
 
 <div class="out">
-<img src="2015-03-06-nyas/lessons/python/03-loop_files/novice/python/03-loop_2_0.png">
+<img src="../../lessons/python/03-loop_files/novice/python/03-loop_2_0.png">
 </div>
 
 
@@ -48,7 +48,7 @@ We can use it to analyze other data sets one by one:
 <pre class="in"><code>analyze(&#39;inflammation-02.csv&#39;)</code></pre>
 
 <div class="out">
-<img src="2015-03-06-nyas/lessons/python/03-loop_files/novice/python/03-loop_4_0.png">
+<img src="../../lessons/python/03-loop_files/novice/python/03-loop_4_0.png">
 </div>
 
 
@@ -387,13 +387,13 @@ for f in filenames:
 
 <div class="out"><pre class='out'><code>inflammation-01.csv
 </code></pre>
-<img src="2015-03-06-nyas/lessons/python/03-loop_files/novice/python/03-loop_49_1.png">
+<img src="../../lessons/python/03-loop_files/novice/python/03-loop_49_1.png">
 <pre class='out'><code>inflammation-02.csv
 </code></pre>
-<img src="2015-03-06-nyas/lessons/python/03-loop_files/novice/python/03-loop_49_3.png">
+<img src="../../lessons/python/03-loop_files/novice/python/03-loop_49_3.png">
 <pre class='out'><code>inflammation-03.csv
 </code></pre>
-<img src="2015-03-06-nyas/lessons/python/03-loop_files/novice/python/03-loop_49_5.png">
+<img src="../../lessons/python/03-loop_files/novice/python/03-loop_49_5.png">
 </div>
 
 
