@@ -1,0 +1,280 @@
+---
+title: "Working with dplyr"
+output: html_document
+---
+
+We just briefly covered a few basics of working with relational databases. 
+Now, we're going to go back to working with in R, and work with a package that
+borrows much of it's syntax from SQL type languages. This package is called
+`dplyr`
+
+The first step is to install the `dplyr` package. We'll use the command
+`install.packages` to do this. The first time you use `install.pacakges` you 
+may see a prompt asking you to choose a "mirror site" to download from. 
+You can select any site, but generally the closer the better.
+
+```
+install.packages( "dplyr", dependencies = TRUE )
+```
+
+Now that we have installed `dplyr`, let's load it into our R session.
+We'll use the `library` command to do this.
+
+```{r}
+library( dplyr )
+```
+
+`dplyr` is a package with functions to help us do many of the common 
+tasks we often want to do with our data. It is well documented, with
+an excellent 
+[vignette](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) 
+to get you up and running.
+
+We're going to work with a dataset that comes built in to R, commonly 
+called the
+[iris dataset](https://stat.ethz.ch/R-manual/R-patched/library/datasets/html/iris.html).
+It is also sometimes called Fisher's Iris dataset (but should more appropriately
+be called Anderson's Iris dataset). Because it comes pre-packaged with R, we 
+can load it into our environment using the `data` function.
+
+```{r}
+data( iris )
+```
+
+Let's have a look at this dataset
+
+```{r}
+head( iris )
+tail( iris )
+```
+
+The dataset contains measurements of four characteristics of three
+different species of Iris (plants!). 
+
+## dplyr::select
+
+Recall our lesson on selecting data in sql. We may want to do
+something similar here - let's say we want to select from
+the Iris dataset only the Species names and the Petal.Length 
+measurement.
+
+```{r}
+select( iris, Species, Petal.Length )
+```
+
+## dplyr::arrange
+
+Now let's say we want to order our data by one of our measurement variables. 
+In SQL we used `ORDER BY`. With `dplyr` we're going to use a function
+names `arrange` Note that to keep things cleaner I'm only going to 
+take the head and tail of these new datasets.
+
+```{r}
+head( arrange( iris, Sepal.Length ) )
+tail( arrange( iris, Sepal.Length ) )
+```
+
+## dplyr::filter
+
+Let's filter our data set to we are only looking at specimens with
+Petal.Length greater than 5. This is similar to SQL FILTER.
+
+```{r}
+head( filter( iris, Petal.Length > 5 ) )
+```
+
+## dplyr::mutate
+
+What if we want to create new variables using the variables
+in our current dataset?
+
+```{r}
+head( mutate( iris, Petal.Area = Petal.Width * Petal.Length ) )
+tail( mutate( iris, Petal.Area = Petal.Width * Petal.Length ) )
+```
+
+## Connecting functions
+
+Often we would like to carryout several of the above operations 
+on our data. One way to do this would be to perform each operation
+separately, saving the output, then feeding the output from one operation
+to the next operation. For example, let's say we want to filter by 
+Petal.Width less than 2, then estimate Petal.Area. We could do ...
+
+```{r}
+temp1 <- filter( iris, Petal.Width < 2 )
+temp2 <- mutate( temp1, Petal.Area = Petal.Width * Petal.Length )
+head( temp2 )
+```
+
+However, just like we can "pipe" output from one command into
+a new command in the Unix Shell environment, there is a function
+that allows us to do the same thing in R.
+
+```{r}
+temp3 <- 
+  filter( iris, Petal.Width < 2 ) %>%
+  mutate( Petal.Area = Petal.Width * Petal.Length )
+
+head( temp3 )
+```
+
+And for one more level of piping we can do the following:
+
+```{r}
+temp4 <-
+  iris %>%
+  filter( Petal.Width < 2 ) %>%
+  mutate( Petal.Area = Petal.Width * Petal.Length )
+
+head( temp4 )
+```
+
+Note that we no longer need to have the argument defining the 
+dataset we are interested in working with when we are piping to
+a function. The data are assumed to be the output of the previous
+command.
+
+***
+
+# Challange
+
+Use the functions we just learned, along with the pipe function (%>%)
+to: 
+
+1. Filter out iris with Petal.Length greater than 2
+2. Calculate Petal.Area
+3. Sort the dataset by Petal.Area
+
+***
+
+## dplyr::summarise
+
+The `summarise` function allows us to calculate summaries of our 
+data, such as mean, min, etc. Let's calculate the mean for one 
+of our measurement variables.
+
+```{r}
+iris %>%
+  summarise( Sepal.Length.Mean = mean( Sepal.Length ) )
+
+```
+
+This is clearly more complicated than simply executing 
+`mean( iris[,1] )` or `mean( iris$Sepal.Length )`, but the utility
+of `summarise` will be evident in just a minute.
+
+## dplyr::group_by
+
+What if we want mean values of our measurements for each of the 
+three species? This is where the `group_by` function comes in.
+
+```{r}
+iris %>%
+  group_by( Species ) 
+```
+
+Nothing much seems to have happened, but note that the output
+now includes a line starting with "Groups: ". This means 
+that any `summarise` or `mutate` operations we use will now
+be applied across groups separately. For example:
+
+```{r}
+iris %>%
+  group_by( Species ) %>%
+  summarise( Sepal.Len.Mean = mean( Sepal.Length ) )
+```
+
+We can ask for multiple `summarise`s at the same time.
+
+```{r}
+iris %>%
+  group_by( Species ) %>%
+  summarise( Sepal.Len.Mean = mean( Sepal.Length ),
+             Sepal.Wid.Mean = mean( Sepal.Width ) )
+```
+
+***
+# Challange
+
+Write a script that returns the mean, max, and min values,
+by species, for Sepal.Width.
+
+***
+
+## Merging datasets
+
+Another common task, and one related to dealing with database tables, is to 
+merge related datasets. For example, let's say we had a dataset describing
+the habitat preferences for each of the three species of Iris.
+
+```{r}
+iris_habitat <- data.frame( Species = c( "setosa", "versicolor", "virginica" ),
+                            Habitat = c( "forest", "wetland", "meadow" ) )
+```
+
+How can we merge these data? We'll look at two ways.
+
+First - use the `merge` command.
+
+```{r}
+iris_full <- merge( x = iris, y = iris_habitat, by = "Species" )
+head( iris_full )
+tail( iris_full )
+```
+
+**WARNING. This next section is here primarily to provide you with a reference
+for you might begin to think about merging data tables in the future. Do not
+be concerned if this is over your head.**
+
+Second (more advanced) - this method takes advantage of a variable type called "data.tables". 
+Manipulations of these variable types are very similar to SQL. You may have to 
+install this package first.
+
+```{r}
+library( data.table )
+iris_tbl <- data.table( iris )
+iris_habitat_tbl <- data.table( iris_habitat )
+
+setkey( iris_tbl, Species )
+setkey( iris_habitat_tbl, Species )
+
+iris_tbl[ iris_habitat_tbl ]
+```
+
+Look up the help file for `setkey`
+
+## Bringing it all back together with databases
+
+We can work directly with SQL databases within R, primarily using
+`dplyr` and `data.table`. 
+
+# Working with sql databases using the dplyr package
+# http://cran.r-project.org/web/packages/dplyr/vignettes/databases.html
+
+```{r}
+gen_db <- src_sqlite( "/Users/mlammens/Google Drive/Professional/Software-Carpentry/2015-03-06-nyas/lessons/sql/survey.db" )
+
+gen_db
+
+person <- tbl(gen_db, from = "Person" )
+
+person %>%
+  select( personal, family )
+
+## rather than select, can also de-select
+person %>%
+  select( -personal )
+
+
+
+```
+
+
+***
+
+# Challange
+
+Merge the Person and Survey. Hint, you can only use `merge` by 
+first converting these objects into `data.frames` (rather than
+`data.tables`), then allow the 

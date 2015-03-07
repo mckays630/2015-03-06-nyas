@@ -1,0 +1,111 @@
+# Data visualization with ggplot2
+
+```{r, echo=FALSE, message=FALSE, eval=FALSE}
+# Set eval=TRUE to hide all results and figures.
+# This sets defaults. Can change this manually in individual chunks.
+# Must load knitr so opts_chunk is in search path.
+library(knitr)
+opts_chunk$set(results="hide", fig.show="hide", fig.keep="none")
+```
+
+```{r, echo=FALSE, message=FALSE, eval=TRUE}
+library(knitr)
+opts_chunk$set(message=FALSE)
+```
+
+
+## ggplot2 
+
+No we're going to introduce a data visualization package called **ggplot2**.
+This package is great for producing publication quality graphics, but the syntax
+used in plotting can be a bit tricky.
+
+First, recall how to install and load packages. Install the package if you haven't already:
+
+```{r installggplot2, eval=FALSE}
+# Only need to do this once
+install.packages("ggplot2")
+```
+
+Then load it:
+
+```{r loadggplot2, message=FALSE}
+library(ggplot2)
+```
+
+
+Let's retun to the iris dataset, using the dataset we created that includes habitat type.
+
+```{r look-at-iris}
+head( iris_full )
+tail( iris_full )
+```
+
+We would like to plot Sepal.Length versus Petal.Length. We'll first do this using
+**base R** functions.
+
+```{r plot1}
+plot( x = iris_full$Sepal.Length, y = iris_full$Petal.Length )
+```
+
+Note, we could save a little typing by using the `with` function. This 
+sets up a temporary environment where all of the variables (columns) 
+in my dataset are defined individually.
+
+```{r plot1-with}
+with( data = iris_full, plot( x = Sepal.Length, y = Petal.Length ) )
+```
+
+OK, let's fire up ggplot.
+
+```{r plot1-ggplot}
+ggplot() + # First make an empty ggplot canvas. Notice the trailing plus sign
+  geom_point( data = iris_full, aes( x = Sepal.Length, y = Petal.Length ) )
+```
+
+Let's break down that call to introduce a few key things about ggplot
+
+* ggplot: the initial canvas we're working on
+* geom: geometric objects (i.e. the type of plot - histogram, points, line, etc) 
+* aes: aesthetic mapping 
+
+**THAT SEEMS SO COMPLICATED!**
+
+It's true, for simple plots, ggplot can be much more complicated
+than simply using the base functions. But the power of ggplot lies
+in the ability to lay several geometries (geoms) over each other.
+Also, each geometry has a rich set of options. For example,
+let's say I want to create the plot we just made, but have 
+each species represented by a different color.
+
+```{r plot2}
+ggplot() + # First make an empty ggplot canvas. Notice the trailing plus sign
+  geom_point( data = iris_full, aes( x = Sepal.Length, y = Petal.Length, colour = Species ) )
+```
+
+**facets** - a way to seperate data into different subplots
+
+Let's say we wanted different plots for each species. We can do that in ggplot using
+`facets`
+
+```{r plot2}
+ggplot( data = iris_full, aes( x = Sepal.Length, y = Petal.Length ) ) + 
+  geom_point() +
+  facet_grid( Species ~ . )
+```
+
+
+
+
+
+
+
+
+## Further **ggplot2** resources
+
+* <http://docs.ggplot2.org/current/>: The official **ggplot2** documentation.
+* <http://www.amazon.com/o/ASIN/0387981403/ref=nosim/gettgenedone-20>: The **ggplot2** book, by the developer, Hadley Wickham.
+* <https://groups.google.com/forum/#!forum/ggplot2>: The **ggplot2** Google Group (mailing list, discussion forum).
+* <https://github.com/swcarpentry/bc/tree/master/intermediate/r/data-visualization>: Intermediate Software Carpentry lesson on data visualization with **ggplot2**.
+* <http://learnr.wordpress.com/>: A blog with a good number of posts describing how to reproduce various kind of plots using **ggplot2**.
+* <http://stackoverflow.com/questions/tagged/ggplot2>: Thousands of questions and answers tagged with "ggplot2" on Stack Overflow, a programming Q&A site.
