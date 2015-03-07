@@ -144,3 +144,15 @@ lines from local file
 lines from remote file
 >>>>>>> 1234567890abcdef1234567890abcdef12345678
 ~~~
+
+Readings of possible interest:
+
+* Git - [http://git-scm.com/](http://git-scm.com/) - the home page of the git package
+* The git tutorial - [http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html](http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html) - a good starting place
+* Git For Designers - [http://hoth.entp.com/output/git_for_designers.html](http://hoth.entp.com/output/git_for_designers.html) - an introduction to the concepts behind git
+* Git in a Nutshell - [http://jonas.iki.fi/git_guides/HTML/git_guide/](http://jonas.iki.fi/git_guides/HTML/git_guide/) - a clearly written introduction to the use of git
+* Git man pages - [http://www.kernel.org/pub/software/scm/git/docs/](http://www.kernel.org/pub/software/scm/git/docs/) - the official git documentation, intended for technically-oriented users
+* Git Reference - [http://gitref.org/](http://gitref.org/) - crash course in using git
+* Pro Git - [http://progit.org/book/](http://progit.org/book/) - an entire book on using git better (probably Jared's favorite source on git ever)
+* Git From the Bottom Up - [http://ftp.newartisans.com/pub/git.from.bottom.up.pdf](http://ftp.newartisans.com/pub/git.from.bottom.up.pdf) - a clearly-written article on the theory behind git
+* GitHub documentation - [http://help.github.com/](http://help.github.com/) - although specific to GitHub, this documentation can be useful if you want to share your code via GitHub 
