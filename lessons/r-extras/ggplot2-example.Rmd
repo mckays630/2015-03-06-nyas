@@ -37,6 +37,11 @@ library(ggplot2)
 Let's retun to the iris dataset, using the dataset we created that includes habitat type.
 
 ```{r look-at-iris}
+iris_habitat <- data.frame( Species = c( "setosa", "versicolor", "virginica" ),
+                            Habitat = c( "forest", "wetland", "meadow" ) )
+
+iris_full <- merge( x = iris, y = iris_habitat, by = "Species" )
+
 head( iris_full )
 tail( iris_full )
 ```
@@ -86,16 +91,28 @@ ggplot() + # First make an empty ggplot canvas. Notice the trailing plus sign
 **facets** - a way to seperate data into different subplots
 
 Let's say we wanted different plots for each species. We can do that in ggplot using
-`facets`
+`facets`.
 
-```{r plot2}
+```{r plot2-facets}
 ggplot( data = iris_full, aes( x = Sepal.Length, y = Petal.Length ) ) + 
   geom_point() +
   facet_grid( Species ~ . )
 ```
 
+**NOTE**: I moved the `data ...` stuff into the initial `ggplot` call here.
 
+*** 
 
+# Challange
+
+ggplot has many geometries, allowing us to make lot's of different 
+types of plots. Let's make two new plots - one boxplot of Sepal.Length, 
+with one boxplot for each species. Use `geom_boxplot` for this.
+Second, let's make density plots of Sepal.Width. Use `geom_density` and
+`colour` to make different coloured density lines for iris in each 
+habitat type.
+
+***
 
 
 
